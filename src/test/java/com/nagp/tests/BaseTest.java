@@ -58,8 +58,8 @@ public class BaseTest {
     public void initActions(AppiumDriver driver) {
         basePage = new BasePage(driver);
         androidUtils = new AndroidUtils(driver);
-        createAccountPage = new CreateAccountPage(driver);
-        accountInfoFillPage = new AccountInfoFillPage(driver);
+//        createAccountPage = new CreateAccountPage(driver);
+//        accountInfoFillPage = new AccountInfoFillPage(driver);
     }
 
     public DesiredCapabilities setAppCapabilities(){

@@ -23,8 +23,7 @@ public class CreateAccountPage extends BasePage{
 
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
 
-    AndroidUtils androidUtils = null;
-    public AppiumDriver driver = null;
+    public AppiumDriver driver;
 
     public CreateAccountPage(AppiumDriver driver) {
         super(driver);
@@ -64,31 +63,26 @@ public class CreateAccountPage extends BasePage{
 //    }
 
     public void enterUserName(String fieldValue) {
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.enterValueInTextBox(fieldValue, txt_fullName);
         log.info("Full name is entered as "+fieldValue);
     }
 
     public void enterMobileNo(String fieldValue){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.enterValueInTextBox(fieldValue, txt_mobileNo);
         log.info("Mobile No is entered as "+fieldValue);
     }
 
     public void ClickOnSubmitButton(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.objectClick(btn_Submit);
         androidUtils.waitFor(3000);
     }
 
     public void loginFailed(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         Assert.assertFalse(androidUtils.objectExists(ele_titleLogin), "User able to login with incorrect details.");
         log.info("User not able to login.");
     }
 
     public void loginSuccess(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.waitUntilElementVisible(ele_titleLogin, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_titleLogin), "User is not able to login with correct details.");
         log.info("User able to login.");
@@ -96,7 +90,6 @@ public class CreateAccountPage extends BasePage{
 
     public void LoginScreenCityValidation(String strCities){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         String[] cities = strCities.split(",");
         for(String city : cities){
             String strCityName = select_city.replace("{strCity}",city.trim());
@@ -111,7 +104,6 @@ public class CreateAccountPage extends BasePage{
     }
 
     public void SelectCountyAndCity(String strCity, String strArea) {
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         String strCityObject = select_city.replace("{strCity}",strCity);
         By loc_City = By.xpath(strCityObject);
         androidUtils.objectTap(loc_City);
@@ -121,7 +113,6 @@ public class CreateAccountPage extends BasePage{
     }
 
     public void FillDetailsScreen(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.waitUntilElementVisible(ele_FillDetails, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_FillDetails), "User is not able to navigate to fill profile details screen.");
         log.info("User is able to navigate to fill profile details screen.");

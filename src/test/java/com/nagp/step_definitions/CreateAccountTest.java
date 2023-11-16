@@ -13,11 +13,6 @@ import org.testng.annotations.AfterClass;
 public class CreateAccountTest extends BaseTest {
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
 
-    public CreateAccountTest(){
-        super();
-        this.driver = initializeDriver();
-    }
-
 
     @Given("User launch the application")
     public void fnLaunchApplication() throws InterruptedException {
@@ -26,7 +21,6 @@ public class CreateAccountTest extends BaseTest {
     @Then("user should be able to successfully launch the application")
     public void fnLaunchSuccessfully() {
         basePage.fnLaunchSuccess();
-
     }
 
     @Given("User enter the {string} in FullName field")
@@ -107,11 +101,6 @@ public class CreateAccountTest extends BaseTest {
     @Then("user see {string} under Interested_Exerienced section")
     public void  fnVerifyInterestedSection(String interested) {
         accountInfoFillPage.VerifyInterestedSection(interested);
-    }
-
-    @After
-    public void tearDown(){
-        basePage.tearDown();
     }
 
 }

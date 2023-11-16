@@ -12,8 +12,7 @@ import static com.nagp.utils.Constants.*;
 
 public class AccountInfoFillPage extends BasePage{
     final static Logger log = Logger.getLogger(AccountInfoFillPage.class);
-
-    AndroidUtils androidUtils;
+    
     public AppiumDriver driver;
 
     public AccountInfoFillPage(AppiumDriver driver) {
@@ -30,7 +29,6 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifyGenderSection(String strGender){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Gender);
@@ -53,7 +51,6 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifyQualificationSection(String strQualification){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Qualification);
@@ -76,7 +73,7 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifylanguageSection(String strLanguage){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Medium);
@@ -99,7 +96,7 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifyFluencySection(String strfluency){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Fluency);
@@ -122,7 +119,7 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifyExperienceSection(String strExperience){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Exp);
@@ -144,14 +141,14 @@ public class AccountInfoFillPage extends BasePage{
     }
 
     public void ScrollUptoDown(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
         androidUtils.scrollUptoDown(0.70,0.10,0.50);
         androidUtils.waitFor(1000);
     }
 
     public void VerifyAgeSection(){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Age);
@@ -167,7 +164,7 @@ public class AccountInfoFillPage extends BasePage{
 
     public void VerifyInterestedSection(String strInterested){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+        
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_InterestedIn);
