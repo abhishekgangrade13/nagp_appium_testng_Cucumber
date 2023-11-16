@@ -1,40 +1,64 @@
-package tests;
+package com.nagp.tests;
 
+import com.nagp.pages.AccountInfoFillPage;
+import com.nagp.pages.BasePage;
+import com.nagp.pages.CreateAccountPage;
+import com.nagp.utils.AndroidUtils;
+import com.nagp.utils.ConfigFileReader;
+import com.nagp.utils.Listener;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.TouchAction;
+import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-import utils.ConfigFileReader;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+@Listeners(Listener.class)
 public class BaseClass {
 
+    final static Logger log = LogManager.getLogger(BaseClass.class);
+
+    protected BasePage basePage;
+    protected AndroidUtils androidUtils;
+    protected CreateAccountPage createAccountPage;
+
+    protected AccountInfoFillPage accountInfoFillPage;
+
     public AppiumDriver<MobileElement> driver;
+
     URL appiumURL = null;
 
-
+    @BeforeClass(alwaysRun = true)
     public AppiumDriver initializeDriver(){
         try{
-            appiumURL = new URL("http://" +ConfigFileReader.getConfigPropertyVal("AppiumServer") +":" +ConfigFileReader.getConfigPropertyVal("AppiumPort") +"/wd/hub");
+            appiumURL = new URL("http://" + ConfigFileReader.getConfigPropertyVal("AppiumServer") +":" +ConfigFileReader.getConfigPropertyVal("AppiumPort") +"/wd/hub");
             this.driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
+            log.info("Driver initialized.");
+            initActions(driver);
         }
         catch (Exception e){
-            System.out.println("appiumURL: "+ appiumURL);
-            System.out.println("setAppCapabilities :"+setAppCapabilities());
-            System.out.println("messgae : "+e.getMessage());
+            log.info("Error message:"+e.getMessage());
             e.printStackTrace();
         }
         return driver;
+    }
+
+    public void initActions(AppiumDriver driver) {
+        basePage = new BasePage(driver);
+        androidUtils = new AndroidUtils(driver);
+        createAccountPage = new CreateAccountPage(driver);
+        accountInfoFillPage = new AccountInfoFillPage(driver);
     }
 
     public DesiredCapabilities setAppCapabilities(){
@@ -57,28 +81,34 @@ public class BaseClass {
         return destinationFile;
     }
 
-//    @BeforeTest
-//    public void setUp() {
-//        try{
-//            DesiredCapabilities caps = new DesiredCapabilities();
-//            caps.setCapability("autoGrantPermissions", ConfigFileReader.getConfigPropertyVal("autoGrantPermissions"));
-//            caps.setCapability("deviceName", ConfigFileReader.getConfigPropertyVal("deviceName"));
-//            caps.setCapability("platformName", ConfigFileReader.getConfigPropertyVal("platformName"));
-//            caps.setCapability("platformVersion", ConfigFileReader.getConfigPropertyVal("platformVersion"));
-//            caps.setCapability("appPackage", ConfigFileReader.getConfigPropertyVal("appPackage"));
-//            caps.setCapability("appActivity", ConfigFileReader.getConfigPropertyVal("appActivity"));
-//            caps.setCapability("app", ConfigFileReader.getConfigPropertyVal("app"));
-//
-//            URL url = new URL("http://0.0.0.0:4723/wd/hub");
-//
-//            driver = new AppiumDriver<MobileElement>(url, caps);
-//
-//        }catch(Exception ex){
-//            System.out.println("Message is : "+ex.getMessage());
-//            ex.printStackTrace();
-//        }
+//    @AfterTest(alwaysRun = true)
+//    public void tearDown() {
+//        driver.quit();
 //    }
-//
+
+    @AfterClass(alwaysRun = true)
+    public void tearDownAfterClass() {
+        driver.quit();
+    }
+
+
+//    @After
+//    public void tearDown(){
+//        driver.quit();
+//        log.info("driver quit.");
+//    }
+
+//    @AfterClass(order = 1)  //end of class
+//    public void deleteApp(){
+////        if(scenario.isFailed())
+////        {
+////           scenario.attach(getByteScreenshot(), "image/png", scenario.getName());
+////        }
+//        log.info("Remove app from android");
+//        driver.removeApp(ConfigFileReader.getConfigPropertyVal("appPackage"));
+//        driver.quit();
+//    }
+
 //    @AfterSuite
 //    public void tearDown(){
 //        driver.close();

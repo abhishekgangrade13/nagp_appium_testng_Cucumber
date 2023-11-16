@@ -1,4 +1,4 @@
-package utils;
+package com.nagp.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

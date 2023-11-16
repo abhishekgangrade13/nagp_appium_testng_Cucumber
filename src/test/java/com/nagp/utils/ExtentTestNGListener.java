@@ -1,6 +1,5 @@
-package utils;
+package com.nagp.utils;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,10 +20,10 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-public class ExtentTestNGIReporterListener implements IReporter {
+public class ExtentTestNGListener implements IReporter {
 
-    private static final String OUTPUT_FOLDER = "target/customReporter/";
-    private static final String FILE_NAME = ".html";
+    private static final String OUTPUT_FOLDER = "test-output/";
+    private static final String FILE_NAME = "Extent.html";
 
     private ExtentReports extent;
 
@@ -41,6 +40,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
                 buildTestNodes(context.getFailedTests(), Status.FAIL);
                 buildTestNodes(context.getSkippedTests(), Status.SKIP);
                 buildTestNodes(context.getPassedTests(), Status.PASS);
+
             }
         }
 
@@ -52,31 +52,19 @@ public class ExtentTestNGIReporterListener implements IReporter {
     }
 
     private void init() {
-        File theDir = new File(OUTPUT_FOLDER);
-        if (!theDir.exists()) {
-            try {
-                theDir.mkdir();
-            } catch (SecurityException se) {
-            }
-        }
-//		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(
-//				OUTPUT_FOLDER + config.getBrowserStackBuild() + FILE_NAME);
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(
-                OUTPUT_FOLDER + "index"+FILE_NAME);
-
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
         htmlReporter.config()
-                .setDocumentTitle("Build No");
+                .setDocumentTitle("ExtentReports - Created by TestNG Listener");
         htmlReporter.config()
-                .setReportName("API Automation");
+                .setReportName("ExtentReports - Created by TestNG Listener");
         htmlReporter.config()
-                .setTheme(Theme.DARK);
+                .setTheme(Theme.STANDARD);
 
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setReportUsesManualConfiguration(true);
     }
 
-    @SuppressWarnings("static-access")
     private void buildTestNodes(IResultMap tests, Status status) {
         ExtentTest test;
 
@@ -84,8 +72,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
             for (ITestResult result : tests.getAllResults()) {
                 test = extent.createTest(result.getMethod()
                         .getMethodName());
-                test.log(status.INFO, result.getMethod()
-                        .getDescription());
+
                 for (String group : result.getMethod()
                         .getGroups())
                     test.assignCategory(group);

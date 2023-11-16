@@ -1,16 +1,26 @@
-package utils;
+package com.nagp.utils;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 
-import io.appium.java_client.android.AndroidDriver;
-import tests.BaseClass;
+import com.nagp.tests.BaseClass;
 
 public class Listener extends BaseClass implements ITestListener {
+//    public AppiumDriver driver;
+//    public Listener(){
+//        super();
+//        this.driver = initializeDriver();
+//    }
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -31,9 +41,9 @@ public class Listener extends BaseClass implements ITestListener {
         // TODO Auto-generated method stub
         System.out.println("Testcase Failed :"+result.getName());
         String testMethodName = result.getMethod().getMethodName();
-        AndroidDriver mobileDriver = null;
+        AppiumDriver mobileDriver = null;
         try {
-            mobileDriver =(AndroidDriver)result.getTestClass().getRealClass().getDeclaredField("mobileDriver").get(result.getInstance());
+            mobileDriver =(AppiumDriver) result.getTestClass().getRealClass().getDeclaredField("mobileDriver").get(result.getInstance());
         } catch(Exception e)
         {
             e.printStackTrace();
@@ -45,6 +55,7 @@ public class Listener extends BaseClass implements ITestListener {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
+//        captureScreenShot(result, "fail");
     }
 
     @Override
@@ -69,6 +80,24 @@ public class Listener extends BaseClass implements ITestListener {
     public void onFinish(ITestContext context) {
         // TODO Auto-generated method stub
 
+    }
+
+    // Function to capture screenshot.
+    public void captureScreenShot(ITestResult result, String status) {
+        // AndroidDriver driver=ScreenshotOnPassFail.getDriver();
+        String destDir = "";
+        String passfailMethod = result.getMethod().getRealClass().getSimpleName() + "." + result.getMethod().getMethodName();
+        // To capture screenshot.
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
+        // If status = fail then set folder name "screenshots/Failures"
+        if (status.equalsIgnoreCase("fail")) {
+            destDir = "screenshots/Failures";
+        }
+        // If status = pass then set folder name "screenshots/Success"
+        else if (status.equalsIgnoreCase("pass")) {
+            destDir = "screenshots/Success";
+        }
     }
 
 }
