@@ -6,6 +6,7 @@ Feature: FillAccountRelatedInfo
     Given User launch the application
     Then user should be able to successfully launch the application
 
+
 #  Scenario Outline: Validate the elements on Profile information screen.
 #    Given User enter the "<Name>" in FullName field
 #    And User enter the "<MobileNo>" in Mobile field

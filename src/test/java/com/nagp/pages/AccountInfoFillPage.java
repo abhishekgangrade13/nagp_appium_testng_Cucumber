@@ -188,17 +188,17 @@ public class AccountInfoFillPage {
     }
 
     public void TabField(String fieldName, String fieldValue){
-        String objString;
+        String objString, strReplaceName;
         if (!(fieldName.trim().equalsIgnoreCase("InterestedIn"))){
             objString = btn_appInfoScreen;
+            strReplaceName = "{strButtonName}";
         }
         else{
             objString = chkbx_appInfoScreen;
+            strReplaceName = "{strCheckboxName}";
         }
-        System.out.println("objString-"+objString);
         AndroidUtils androidUtils =new AndroidUtils(driver);
-        By loc_field = By.xpath(objString.replace("{strButtonName}",fieldValue.trim()));
-        System.out.println(loc_field);
+        By loc_field = By.xpath(objString.replace(strReplaceName,fieldValue.trim()));
         androidUtils.objectTap(loc_field);
         log.info("User selected "+fieldName+" as "+fieldValue);
     }
@@ -217,7 +217,7 @@ public class AccountInfoFillPage {
 
     public void VerifySalaryDetailsScreen(){
         AndroidUtils androidUtils =new AndroidUtils(driver);
-        By ele_SalaryDetailScreen = By.xpath(chkbx_appInfoScreen.replace("{strCheckboxName}","Aapki Last Salary Kya thi"));
+        By ele_SalaryDetailScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}","Aapki Last Salary Kya thi"));
         androidUtils.waitUntilElementVisible(ele_SalaryDetailScreen, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_SalaryDetailScreen), "User is not able to navigate to last salary details screen.");
         log.info("User is able to navigate to last salary details screen.");

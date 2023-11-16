@@ -20,7 +20,7 @@ public class CreateAccountTest extends BaseTest {
 
 
     @Given("User launch the application")
-    public void fnLaunchApplication() throws InterruptedException {
+    public void fnLaunchApplication() {
         basePage.fnAcceptPermission();
     }
     @Then("user should be able to successfully launch the application")
