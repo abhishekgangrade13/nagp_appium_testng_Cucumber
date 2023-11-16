@@ -29,7 +29,6 @@ public class BasePage{
     //------------------------------------------------------------------
 
     public void fnAcceptPermission(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.objectClick(btn_Permmission_Continue);
         androidUtils.waitUntilElementVisible(btn_OK,5000);
         androidUtils.objectClick(btn_OK);
@@ -38,7 +37,6 @@ public class BasePage{
     }
 
     public void fnLaunchSuccess(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         Assert.assertTrue(androidUtils.objectExists(txt_edtName),"Not able to launch the application");
         log.info("Application home screen displayed successfully.");
     }

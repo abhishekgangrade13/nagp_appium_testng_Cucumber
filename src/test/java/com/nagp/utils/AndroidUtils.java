@@ -1,5 +1,6 @@
 package com.nagp.utils;
 
+import com.nagp.tests.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.TapOptions;
@@ -17,10 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
-public class AndroidUtils {
+public class AndroidUtils extends BaseTest {
 
 	public AppiumDriver driver;
 	public AndroidUtils(AppiumDriver driver) {
+		super();
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
