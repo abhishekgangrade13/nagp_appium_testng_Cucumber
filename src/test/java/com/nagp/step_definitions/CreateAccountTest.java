@@ -18,6 +18,7 @@ public class CreateAccountTest extends BaseTest {
         this.driver = initializeDriver();
     }
 
+
     @Given("User launch the application")
     public void fnLaunchApplication() throws InterruptedException {
         basePage.fnAcceptPermission();
@@ -68,9 +69,49 @@ public class CreateAccountTest extends BaseTest {
         createAccountPage.FillDetailsScreen();
     }
 
-//    @After
-//    public void tearDown(){
-//        basePage.tearDown();
-//    }
+    @Then("user see {string} under My Gender section")
+    public void  fnVerifyGenderSection(String gender) {
+        accountInfoFillPage.VerifyGenderSection(gender);
+    }
+
+    @Then("user see {string} under My Qualification section")
+    public void  fnVerifyQualificationSection(String qualification) {
+        accountInfoFillPage.VerifyQualificationSection(qualification);
+    }
+
+    @Then("user see {string} under My school medium section")
+    public void  fnVerifylanguageSection(String language) {
+        accountInfoFillPage.VerifylanguageSection(language);
+    }
+
+    @Then("user see {string} under How I Speak section")
+    public void  fnVerifyFluencySection(String fluency) {
+        accountInfoFillPage.VerifyFluencySection(fluency);
+    }
+
+    @Then("user see {string} under Fresher_Experience section")
+    public void  fnVerifyExperienceSection(String experience) {
+        accountInfoFillPage.VerifyExperienceSection(experience);
+    }
+
+    @When("User scroll from up to down")
+    public void  fnScrollUptoDown() {
+        accountInfoFillPage.ScrollUptoDown();
+    }
+
+    @Then("user see Age field under My Age section")
+    public void  fnVerifyAgeSection() {
+        accountInfoFillPage.VerifyAgeSection();
+    }
+
+    @Then("user see {string} under Interested_Exerienced section")
+    public void  fnVerifyInterestedSection(String interested) {
+        accountInfoFillPage.VerifyInterestedSection(interested);
+    }
+
+    @After
+    public void tearDown(){
+        basePage.tearDown();
+    }
 
 }

@@ -3,6 +3,7 @@ package com.nagp.utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.an.Y;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 public class AndroidUtils {
 
@@ -150,6 +152,18 @@ public class AndroidUtils {
 		String filename = Math.random()+"";
 		File targetFile = new File(path_screenshot+filename+".jpg");
 		FileUtils.copyFile(srcFile,targetFile);
+	}
+
+	public void scrollUptoDown(double startPercentage, double endPercentage, double anchorPercentage){
+		Dimension size = driver.manage().window().getSize();
+		int anchor = (int)(size.width*anchorPercentage);
+		int start = (int)(size.height*startPercentage);
+		int end = (int)(size.height*endPercentage);
+
+		new TouchAction(driver)
+				.press(PointOption.point(anchor,start))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+				.moveTo(PointOption.point(anchor,end)).release().perform();
 	}
 
 }

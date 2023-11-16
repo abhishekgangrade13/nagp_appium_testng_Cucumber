@@ -39,17 +39,18 @@ public class BaseTest {
 
     URL appiumURL = null;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     public AppiumDriver initializeDriver(){
-        try{
-            appiumURL = new URL("http://" + ConfigFileReader.getConfigPropertyVal("AppiumServer") +":" +ConfigFileReader.getConfigPropertyVal("AppiumPort") +"/wd/hub");
-            this.driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
-            log.info("Driver initialized.");
-            initActions(driver);
-        }
-        catch (Exception e){
-            log.info("Error message:"+e.getMessage());
-            e.printStackTrace();
+        if(driver == null) {
+            try {
+                appiumURL = new URL("http://" + ConfigFileReader.getConfigPropertyVal("AppiumServer") + ":" + ConfigFileReader.getConfigPropertyVal("AppiumPort") + "/wd/hub");
+                this.driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
+                log.info("Driver initialized.");
+                initActions(driver);
+            } catch (Exception e) {
+                log.info("Error message:" + e.getMessage());
+                e.printStackTrace();
+            }
         }
         return driver;
     }
@@ -86,10 +87,10 @@ public class BaseTest {
 //        driver.quit();
 //    }
 
-    @AfterClass(alwaysRun = true)
-    public void tearDownAfterClass() {
-        driver.quit();
-    }
+//    @AfterClass(alwaysRun = true)
+//    public void tearDownAfterClass() {
+//        driver.quit();
+//    }
 
 
 //    @After

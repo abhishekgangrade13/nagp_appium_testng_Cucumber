@@ -13,15 +13,15 @@ public class AccountInfoFillTest extends BaseTest {
 
     final static Logger log = Logger.getLogger(AccountInfoFillTest.class);
 
-    public AccountInfoFillTest(){
-        super();
-        this.driver = initializeDriver();
-    }
-
-    @Then("user see {string} under My Gender section")
-    public void  fnVerifyGenderSection(String gender) {
-        accountInfoFillPage.VerifyGenderSection(gender);
-    }
+//    public AccountInfoFillTest(){
+//        super();
+//        this.driver = initializeDriver();
+//    }
+//
+//    @Then("user see {string} under My Gender section")
+//    public void  fnVerifyGenderSection(String gender) {
+//        accountInfoFillPage.VerifyGenderSection(gender);
+//    }
 
 //    @After
 //    public void tearDown(){

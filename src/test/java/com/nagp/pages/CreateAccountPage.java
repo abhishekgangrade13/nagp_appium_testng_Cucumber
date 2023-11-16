@@ -88,7 +88,6 @@ public class CreateAccountPage {
 
     public void loginSuccess(){
         AndroidUtils androidUtils =new AndroidUtils(driver);
-//        androidUtils.waitFor(5000);
         androidUtils.waitUntilElementVisible(ele_titleLogin, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_titleLogin), "User is not able to login with correct details.");
         log.info("User able to login.");
