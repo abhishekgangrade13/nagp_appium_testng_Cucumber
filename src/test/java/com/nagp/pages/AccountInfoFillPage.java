@@ -23,7 +23,7 @@ public class AccountInfoFillPage {
 
     //Page Objects -----------------------------------------------------------
     String txt_appInfoScreen = "//android.widget.TextView[contains(@text,'{strTextName}')]";
-    String btn_appInfoScreen = "//android.widget.Button[contains(@text,'{strButtonName}')]";
+    String btn_appInfoScreen = "//android.widget.Button[@text='{strButtonName}']";
     String chkbx_appInfoScreen = "//android.widget.CheckBox[contains(@text,'{strCheckboxName}')]";
     //-------------------------------------------------------------------------
 
@@ -186,4 +186,41 @@ public class AccountInfoFillPage {
         Assert.assertTrue(flag && androidUtils.objectExists(loc_txtFieldName), "User is not able to see Interested under Interested_Exerienced section.");
         log.info("User able to see all the Interested fields on screen.");
     }
+
+    public void TabField(String fieldName, String fieldValue){
+        String objString;
+        if (!(fieldName.trim().equalsIgnoreCase("InterestedIn"))){
+            objString = btn_appInfoScreen;
+        }
+        else{
+            objString = chkbx_appInfoScreen;
+        }
+        System.out.println("objString-"+objString);
+        AndroidUtils androidUtils =new AndroidUtils(driver);
+        By loc_field = By.xpath(objString.replace("{strButtonName}",fieldValue.trim()));
+        System.out.println(loc_field);
+        androidUtils.objectTap(loc_field);
+        log.info("User selected "+fieldName+" as "+fieldValue);
+    }
+
+    public void SelectAgeField(String AgeValue){
+        AndroidUtils androidUtils =new AndroidUtils(driver);
+        By loc_Agefield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Age));
+        androidUtils.objectClick(loc_Agefield);
+        androidUtils.waitFor(2000);
+
+        By loc_AgeValue = By.xpath(txt_appInfoScreen.replace("{strTextName}",AgeValue));
+        androidUtils.objectClick(loc_AgeValue);
+        androidUtils.waitFor(2000);
+        log.info("User selected age as "+AgeValue);
+    }
+
+    public void VerifySalaryDetailsScreen(){
+        AndroidUtils androidUtils =new AndroidUtils(driver);
+        By ele_SalaryDetailScreen = By.xpath(chkbx_appInfoScreen.replace("{strCheckboxName}","Aapki Last Salary Kya thi"));
+        androidUtils.waitUntilElementVisible(ele_SalaryDetailScreen, 15000);
+        Assert.assertTrue(androidUtils.objectExists(ele_SalaryDetailScreen), "User is not able to navigate to last salary details screen.");
+        log.info("User is able to navigate to last salary details screen.");
+    }
+
 }

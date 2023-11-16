@@ -109,9 +109,24 @@ public class CreateAccountTest extends BaseTest {
         accountInfoFillPage.VerifyInterestedSection(interested);
     }
 
-    @After
-    public void tearDown(){
-        basePage.tearDown();
+    @When("User selected {string} as {string}")
+    public void  fnTabField(String fieldName, String fieldValue) {
+        accountInfoFillPage.TabField(fieldName, fieldValue);
     }
+
+    @When("user selected age as {string}")
+    public void  fnSelectAgeField(String ageValue) {
+        accountInfoFillPage.SelectAgeField(ageValue);
+    }
+
+    @Then("User should be navigated to last salary details screen")
+    public void fnVerifySalaryDetailsScreen() {
+        accountInfoFillPage.VerifySalaryDetailsScreen();
+    }
+
+//    @After
+//    public void tearDown(){
+//        basePage.tearDown();
+//    }
 
 }
