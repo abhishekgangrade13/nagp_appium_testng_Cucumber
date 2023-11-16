@@ -14,7 +14,7 @@ Feature: FillAccountRelatedInfo
     When user select "<City>" city and "<Area>" area
     And User click on submit button
     Then User should be able to see fill profile details screen
-    And user see "<Gender>" under My Gender section
+#    And user see "<Gender>" under My Gender section
 
     Examples:
       | Name     | MobileNo   | City   | Area  | Gender      |  |

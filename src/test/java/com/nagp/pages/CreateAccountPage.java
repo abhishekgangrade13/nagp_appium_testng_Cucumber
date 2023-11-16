@@ -110,7 +110,7 @@ public class CreateAccountPage {
         log.info("User able to see all the cities-"+strCities);
     }
 
-    public void SelectCountyAndCity(String strCity, String strArea) throws InterruptedException {
+    public void SelectCountyAndCity(String strCity, String strArea) {
         AndroidUtils androidUtils =new AndroidUtils(driver);
         String strCityObject = select_city.replace("{strCity}",strCity);
         By loc_City = By.xpath(strCityObject);

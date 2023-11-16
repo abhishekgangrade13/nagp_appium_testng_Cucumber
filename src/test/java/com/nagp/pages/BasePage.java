@@ -1,7 +1,6 @@
 package com.nagp.pages;
 
 import com.nagp.step_definitions.CreateAccountTest;
-import com.nagp.tests.BaseClass;
 import com.nagp.utils.AndroidUtils;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;

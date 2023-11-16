@@ -1,16 +1,16 @@
 package com.nagp.step_definitions;
 
 import com.nagp.pages.BasePage;
+import com.nagp.tests.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import com.nagp.tests.BaseClass;
 import org.testng.annotations.AfterClass;
 
-public class CreateAccountTest extends BaseClass {
+public class CreateAccountTest extends BaseTest {
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
 
     public CreateAccountTest(){
@@ -59,7 +59,7 @@ public class CreateAccountTest extends BaseClass {
     }
 
     @When("user select {string} city and {string} area")
-    public void fnSelectCountryAndCity(String city, String area) throws InterruptedException {
+    public void fnSelectCountryAndCity(String city, String area){
         createAccountPage.SelectCountyAndCity(city, area);
     }
 
@@ -68,9 +68,9 @@ public class CreateAccountTest extends BaseClass {
         createAccountPage.FillDetailsScreen();
     }
 
-    @After
-    public void tearDown(){
-        basePage.tearDown();
-    }
+//    @After
+//    public void tearDown(){
+//        basePage.tearDown();
+//    }
 
 }

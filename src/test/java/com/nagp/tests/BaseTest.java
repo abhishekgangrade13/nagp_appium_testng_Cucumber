@@ -25,9 +25,9 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(Listener.class)
-public class BaseClass {
+public class BaseTest {
 
-    final static Logger log = LogManager.getLogger(BaseClass.class);
+    final static Logger log = LogManager.getLogger(BaseTest.class);
 
     protected BasePage basePage;
     protected AndroidUtils androidUtils;

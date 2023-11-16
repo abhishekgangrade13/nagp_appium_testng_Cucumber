@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import com.nagp.tests.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,9 +14,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 
-import com.nagp.tests.BaseClass;
-
-public class Listener extends BaseClass implements ITestListener {
+public class Listener extends BaseTest implements ITestListener {
 //    public AppiumDriver driver;
 //    public Listener(){
 //        super();

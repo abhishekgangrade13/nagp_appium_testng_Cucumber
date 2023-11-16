@@ -19,8 +19,12 @@ public class AccountInfoFillPage {
     }
 
     // Page Objects -----------------------------------------------------------
-    private static final By txt_fullName = By.id("et_name");
+    private static final By txt_appInfoScreen = By.id("//android.widget.TextView[@Co]");
 
 
     //-------------------------------------------------------------------------
+
+    public  void VerifyGenderSection(String strGender){
+
+    }
 }

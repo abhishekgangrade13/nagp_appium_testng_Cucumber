@@ -6,10 +6,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import com.nagp.tests.BaseClass;
+import com.nagp.tests.BaseTest;
 import org.testng.annotations.AfterClass;
 
-public class AccountInfoFillTest extends BaseClass {
+public class AccountInfoFillTest extends BaseTest {
 
     final static Logger log = Logger.getLogger(AccountInfoFillTest.class);
 
@@ -18,10 +18,14 @@ public class AccountInfoFillTest extends BaseClass {
         this.driver = initializeDriver();
     }
 
-
-    @After
-    public void tearDown(){
-        basePage.tearDown();
+    @Then("user see {string} under My Gender section")
+    public void  fnVerifyGenderSection(String gender) {
+        accountInfoFillPage.VerifyGenderSection(gender);
     }
+
+//    @After
+//    public void tearDown(){
+//        basePage.tearDown();
+//    }
 
 }

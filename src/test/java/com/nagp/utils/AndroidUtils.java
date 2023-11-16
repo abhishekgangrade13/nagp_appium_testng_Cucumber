@@ -1,7 +1,5 @@
 package com.nagp.utils;
 
-
-import com.nagp.tests.BaseClass;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.TapOptions;
