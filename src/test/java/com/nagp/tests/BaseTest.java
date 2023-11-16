@@ -39,12 +39,12 @@ public class BaseTest {
 
     URL appiumURL = null;
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public AppiumDriver initializeDriver(){
         if(driver == null) {
             try {
                 appiumURL = new URL("http://" + ConfigFileReader.getConfigPropertyVal("AppiumServer") + ":" + ConfigFileReader.getConfigPropertyVal("AppiumPort") + "/wd/hub");
-                this.driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
+                driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
                 log.info("Driver initialized.");
                 initActions(driver);
             } catch (Exception e) {

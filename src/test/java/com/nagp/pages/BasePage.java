@@ -11,9 +11,8 @@ import org.testng.Assert;
 
 public class BasePage{
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
-
-    AndroidUtils androidUtils = null;
-    public AppiumDriver driver = null;
+    AndroidUtils androidUtils;
+    public AppiumDriver driver;
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;

@@ -19,7 +19,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateAccountPage {
+public class CreateAccountPage extends BasePage{
 
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
 
@@ -27,6 +27,7 @@ public class CreateAccountPage {
     public AppiumDriver driver = null;
 
     public CreateAccountPage(AppiumDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

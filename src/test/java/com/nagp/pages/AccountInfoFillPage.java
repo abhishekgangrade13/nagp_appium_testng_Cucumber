@@ -10,13 +10,14 @@ import org.testng.Assert;
 
 import static com.nagp.utils.Constants.*;
 
-public class AccountInfoFillPage {
+public class AccountInfoFillPage extends BasePage{
     final static Logger log = Logger.getLogger(AccountInfoFillPage.class);
 
-    AndroidUtils androidUtils = null;
-    public AppiumDriver driver = null;
+    AndroidUtils androidUtils;
+    public AppiumDriver driver;
 
     public AccountInfoFillPage(AppiumDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
