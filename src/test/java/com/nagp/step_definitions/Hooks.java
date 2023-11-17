@@ -1,12 +1,12 @@
-package com.nagp.tests;
+package com.nagp.step_definitions;
 
+import com.nagp.tests.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class Hooks extends BaseTest{
+public class Hooks extends BaseTest {
 
-//    AppiumDriver driver = null;
 //    @Before //start of each secenario
 //    public void setUp(){
 ////        System.out.println("Setting up Android capabilities and launch app");

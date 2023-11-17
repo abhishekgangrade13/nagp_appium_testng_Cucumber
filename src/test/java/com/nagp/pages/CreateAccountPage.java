@@ -21,13 +21,14 @@ import java.util.List;
 
 public class CreateAccountPage {
 
-    final static Logger log = Logger.getLogger(CreateAccountTest.class);
+    final static Logger log = Logger.getLogger(CreateAccountPage.class);
 
     AndroidUtils androidUtils = null;
     public AppiumDriver driver = null;
 
     public CreateAccountPage(AppiumDriver driver) {
         this.driver = driver;
+        this.androidUtils = new AndroidUtils(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -42,7 +43,11 @@ public class CreateAccountPage {
     private static final By txt_area = By.id("act_auto_complete");
 
     private static final By ele_FillDetails = By.id("tv_profile_heading");
-
+    private static final By btn_referalCode = By.id("tv_referral_code");
+    private static final By txt_referalCode = By.id("et_referral_code");
+    private static final By btn_ApplyReferalCode = By.id("android:id/button1");
+    private static final By btn_CancelReferalCode = By.id("android:id/button2");
+    private static final By msg_referalCode = By.id("tv_message");
     //-------------------------------------------------------------------------
 
 //    public void enterUserName(String fieldName, String fieldValue){
@@ -63,31 +68,31 @@ public class CreateAccountPage {
 //    }
 
     public void enterUserName(String fieldValue) {
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.enterValueInTextBox(fieldValue, txt_fullName);
         log.info("Full name is entered as "+fieldValue);
     }
 
     public void enterMobileNo(String fieldValue){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.enterValueInTextBox(fieldValue, txt_mobileNo);
         log.info("Mobile No is entered as "+fieldValue);
     }
 
     public void ClickOnSubmitButton(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.objectClick(btn_Submit);
         androidUtils.waitFor(3000);
     }
 
     public void loginFailed(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         Assert.assertFalse(androidUtils.objectExists(ele_titleLogin), "User able to login with incorrect details.");
         log.info("User not able to login.");
     }
 
     public void loginSuccess(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.waitUntilElementVisible(ele_titleLogin, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_titleLogin), "User is not able to login with correct details.");
         log.info("User able to login.");
@@ -95,7 +100,7 @@ public class CreateAccountPage {
 
     public void LoginScreenCityValidation(String strCities){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         String[] cities = strCities.split(",");
         for(String city : cities){
             String strCityName = select_city.replace("{strCity}",city.trim());
@@ -110,7 +115,7 @@ public class CreateAccountPage {
     }
 
     public void SelectCountyAndCity(String strCity, String strArea) {
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         String strCityObject = select_city.replace("{strCity}",strCity);
         By loc_City = By.xpath(strCityObject);
         androidUtils.objectTap(loc_City);
@@ -120,10 +125,32 @@ public class CreateAccountPage {
     }
 
     public void FillDetailsScreen(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
+//        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.waitUntilElementVisible(ele_FillDetails, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_FillDetails), "User is not able to navigate to fill profile details screen.");
         log.info("User is able to navigate to fill profile details screen.");
     }
 
+    public void EnterReferalCode(String fieldValue){
+        androidUtils.waitFor(3000);
+        driver.hideKeyboard();
+        androidUtils.waitFor(3000);
+        androidUtils.objectClick(btn_referalCode);
+        androidUtils.waitUntilElementVisible(txt_referalCode,5000);
+        androidUtils.enterValueInTextBox(fieldValue, txt_referalCode);
+        androidUtils.waitFor(2000);
+        androidUtils.objectClick(btn_ApplyReferalCode);
+        log.info("Referal code is entered "+fieldValue);
+    }
+
+    public void ErrorMessageReferalCode(String errmsg){
+        boolean flag = false;
+        androidUtils.waitUntilElementVisible(msg_referalCode,7000);
+        if(androidUtils.getElementText(msg_referalCode).equalsIgnoreCase(errmsg)){
+            flag = true;
+        }
+        androidUtils.objectTap(btn_CancelReferalCode);
+        Assert.assertTrue(flag, "User not receive error message 'Not a Valid Code' on screen.");
+        log.info("User received error message 'Not a Valid Code' on screen.");
+    }
 }

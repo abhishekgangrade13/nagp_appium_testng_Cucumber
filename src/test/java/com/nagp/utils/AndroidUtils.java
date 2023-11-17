@@ -154,7 +154,7 @@ public class AndroidUtils {
 		FileUtils.copyFile(srcFile,targetFile);
 	}
 
-	public void scrollUptoDown(double startPercentage, double endPercentage, double anchorPercentage){
+	public void scrollUptoDown(double startPercentage, double endPercentage, double anchorPercentage, int timeOut){
 		Dimension size = driver.manage().window().getSize();
 		int anchor = (int)(size.width*anchorPercentage);
 		int start = (int)(size.height*startPercentage);
@@ -162,7 +162,7 @@ public class AndroidUtils {
 
 		new TouchAction(driver)
 				.press(PointOption.point(anchor,start))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(timeOut)))
 				.moveTo(PointOption.point(anchor,end)).release().perform();
 	}
 

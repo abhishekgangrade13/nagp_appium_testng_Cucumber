@@ -3,6 +3,7 @@ package com.nagp.tests;
 import com.nagp.pages.AccountInfoFillPage;
 import com.nagp.pages.BasePage;
 import com.nagp.pages.CreateAccountPage;
+import com.nagp.pages.HomeApplyJobPage;
 import com.nagp.utils.AndroidUtils;
 import com.nagp.utils.ConfigFileReader;
 import com.nagp.utils.Listener;
@@ -32,16 +33,15 @@ public class BaseTest {
     protected BasePage basePage;
     protected AndroidUtils androidUtils;
     protected CreateAccountPage createAccountPage;
-
     protected AccountInfoFillPage accountInfoFillPage;
+    protected HomeApplyJobPage homeApplyJobPage;
 
     public AppiumDriver<MobileElement> driver;
 
     URL appiumURL = null;
 
-    @BeforeSuite(alwaysRun = true)
+//    @BeforeSuite(alwaysRun = true)
     public AppiumDriver initializeDriver(){
-        if(driver == null) {
             try {
                 appiumURL = new URL("http://" + ConfigFileReader.getConfigPropertyVal("AppiumServer") + ":" + ConfigFileReader.getConfigPropertyVal("AppiumPort") + "/wd/hub");
                 this.driver = new AppiumDriver<MobileElement>(appiumURL, setAppCapabilities());
@@ -51,7 +51,6 @@ public class BaseTest {
                 log.info("Error message:" + e.getMessage());
                 e.printStackTrace();
             }
-        }
         return driver;
     }
 
@@ -60,6 +59,7 @@ public class BaseTest {
         androidUtils = new AndroidUtils(driver);
         createAccountPage = new CreateAccountPage(driver);
         accountInfoFillPage = new AccountInfoFillPage(driver);
+        homeApplyJobPage = new HomeApplyJobPage(driver);
     }
 
     public DesiredCapabilities setAppCapabilities(){
@@ -71,6 +71,7 @@ public class BaseTest {
         caps.setCapability("appPackage", ConfigFileReader.getConfigPropertyVal("appPackage"));
         caps.setCapability("appActivity", ConfigFileReader.getConfigPropertyVal("appActivity"));
         caps.setCapability("app", System.getProperty("user.dir")+"/"+ConfigFileReader.getConfigPropertyVal("app"));
+//        caps.setCapability("orientation","LANDSCAPE");
         return caps;
     }
 

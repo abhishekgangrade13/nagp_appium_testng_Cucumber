@@ -144,8 +144,8 @@ public class AccountInfoFillPage {
 
     public void ScrollUptoDown(){
         AndroidUtils androidUtils =new AndroidUtils(driver);
-        androidUtils.scrollUptoDown(0.70,0.10,0.50);
-        androidUtils.waitFor(1000);
+        androidUtils.scrollUptoDown(0.70,0.10,0.50, 2000);
+//        androidUtils.waitFor(1000);
     }
 
     public void VerifyAgeSection(){
@@ -192,13 +192,13 @@ public class AccountInfoFillPage {
         if (!(fieldName.trim().equalsIgnoreCase("InterestedIn"))){
             objString = btn_appInfoScreen;
             strReplaceName = "{strButtonName}";
-        }
-        else{
+        }else{
             objString = chkbx_appInfoScreen;
             strReplaceName = "{strCheckboxName}";
         }
         AndroidUtils androidUtils =new AndroidUtils(driver);
         By loc_field = By.xpath(objString.replace(strReplaceName,fieldValue.trim()));
+        androidUtils.waitUntilElementVisible(loc_field,3000);
         androidUtils.objectTap(loc_field);
         log.info("User selected "+fieldName+" as "+fieldValue);
     }
@@ -217,10 +217,34 @@ public class AccountInfoFillPage {
 
     public void VerifySalaryDetailsScreen(){
         AndroidUtils androidUtils =new AndroidUtils(driver);
-        By ele_SalaryDetailScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}","Aapki Last Salary Kya thi"));
+        By ele_SalaryDetailScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_Salary));
         androidUtils.waitUntilElementVisible(ele_SalaryDetailScreen, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_SalaryDetailScreen), "User is not able to navigate to last salary details screen.");
         log.info("User is able to navigate to last salary details screen.");
     }
+
+    public void SelectLastDrawnSalary(String lastSalaryValue){
+        AndroidUtils androidUtils =new AndroidUtils(driver);
+        By loc_lastSalaryfield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Salary));
+        androidUtils.waitUntilElementVisible(loc_lastSalaryfield,3000);
+        androidUtils.objectClick(loc_lastSalaryfield);
+        androidUtils.waitFor(2000);
+
+        By loc_LastSalaryValue = By.xpath(txt_appInfoScreen.replace("{strTextName}",lastSalaryValue));
+        androidUtils.waitUntilElementVisible(loc_LastSalaryValue,3000);
+        androidUtils.objectClick(loc_LastSalaryValue);
+        androidUtils.waitFor(2000);
+        log.info("User selected last drawn salary as "+lastSalaryValue);
+    }
+
+    public void VerifyJobApplyHomeLocation(){
+        AndroidUtils androidUtils =new AndroidUtils(driver);
+        By ele_JobApplyHomeScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_WorkIndia));
+        androidUtils.waitUntilElementVisible(ele_JobApplyHomeScreen, 15000);
+        Assert.assertTrue(androidUtils.objectExists(ele_JobApplyHomeScreen), "User is not able to create profile and work india job search screen should be displayed.");
+        log.info("User is able to create profile and work india job search screen should be displayed.");
+    }
+
+
 
 }

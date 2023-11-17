@@ -1,6 +1,7 @@
 package com.nagp.runner;
 
 
+import com.nagp.tests.BaseTest;
 import com.nagp.utils.AppiumServer;
 import com.nagp.utils.ConfigFileReader;
 import io.appium.java_client.AppiumDriver;
@@ -15,7 +16,7 @@ import org.testng.annotations.BeforeSuite;
 import java.net.URL;
 
 @CucumberOptions(
-        features = {"src/test/java/com/nagp/features/AccountInfoFill.feature"},
+        features = {"src/test/java/com/nagp/features"},
         glue = {"com/nagp/step_definitions"},
 //        plugin = {"pretty", "html:target/site/CucumberReport.html", "json:target/cucumber1/json"},
         tags = ""
@@ -31,6 +32,11 @@ public class TestNGRunner extends AbstractTestNGCucumberTests {
 //    @AfterSuite
 //    public void tearDown(){
 //        AppiumServer.stop();
+//    }
+//    BaseTest baseTest = new BaseTest();
+//    @BeforeSuite
+//    public void setUp(){
+//        baseTest.initializeDriver();
 //    }
 
 }
