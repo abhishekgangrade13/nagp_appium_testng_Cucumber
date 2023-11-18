@@ -1,12 +1,13 @@
 
-@HomeApplyJob
-Feature: WorkIndia Job home screen
+@HomeApplyJobFeature
+Feature: In.WorkIndia application - Job Application
 
   Background: launch application
     Given User launch the application
     Then user should be able to successfully launch the application
 
-  Scenario Outline: Verify user able to see all the tabs of workIndia home screen
+  @Sanity @Regression
+  Scenario Outline: Verify user is able to contact to HR while searching for the job
     Given User enter the "<Name>" in FullName field
     And User enter the "<MobileNo>" in Mobile field
     And User click on submit button

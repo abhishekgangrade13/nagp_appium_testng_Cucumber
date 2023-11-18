@@ -1,7 +1,6 @@
 package com.nagp.utils;
 
 public class Constants {
-
     public static final String Title_Gender = "My Gender";
     public static final String Title_Qualification = "My Qualification";
     public static final String Title_Medium = "My School Medium Was";

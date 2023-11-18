@@ -1,13 +1,13 @@
 
-@AccountInfoFill
-Feature: FillAccountRelatedInfo
+@AccountInfoFillScreen
+Feature: Validate the account details screen
 
   Background: Launch Application
     Given User launch the application
     Then user should be able to successfully launch the application
 
-
-  Scenario Outline: Validate the elements on Profile information screen.
+@Sanity @Regression
+  Scenario Outline: Validate the elements on account information screen.
     Given User enter the "<Name>" in FullName field
     And User enter the "<MobileNo>" in Mobile field
     And User click on submit button
@@ -30,7 +30,8 @@ Feature: FillAccountRelatedInfo
       | Abhishek | 1234567869 | MUMBAI | Thane | Male,Female | below 10th Pass,10th Pass,12th Pass & Above,Graduate | English,Hindi,Marathi,Other | No English,Thoda English,Good English,Fluent English | Fresher,Experience | Back Office,Office Boy/ Peon,Counter Sales,Accounts,Receptionist,Delivery,Telecalling,Field Sales,Business Development,Driver,Technician,Housekeeping,Beautician,DTP/Graphic Designer,Ward Boy/Nurse,Cook,Teacher,Other |  |
 
 
-  Scenario Outline: Verify user able to fill the account information screen
+  @Regression
+  Scenario Outline: Validate business development profile experienced user able to create account
     Given User enter the "<Name>" in FullName field
     And User enter the "<MobileNo>" in Mobile field
     And User click on submit button
@@ -58,5 +59,3 @@ Feature: FillAccountRelatedInfo
       | Name  | MobileNo   | City | Area     | Gender | Qualification     | Language | Fluency       | Experience | Interested           | Age      | LastSalary | Language job prfoile |
       | Abhishek | 1234567869 | MUMBAI | Thane    | Male   | 10th Pass     | English  | Good English  | Experience | Business Development | 22 Years | 9000 Rs.   | ENGLISH              |
       | Ankit | 7894561230 | PUNE | Balewadi | Female | 12th Pass & Above | Hindi    | Thoda English | Experience | Business Development | 18 Years | 11000 Rs.  | ENGLISH               |
-
-

@@ -15,11 +15,14 @@
     </properties>
 
     <dependencies>
+        <!--        Appium    -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.6.0</version>
         </dependency>
+
+        <!--        Testng    -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -62,36 +65,12 @@
 
 
 <!--    Extent Report   -->
-<!--        <dependency>-->
-<!--            <groupId>com.aventstack</groupId>-->
-<!--            <artifactId>extentreports</artifactId>-->
-<!--            <version>5.1.1</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports-cucumber4-adapter -->
+        <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-cucumber4-adapter</artifactId>
-            <version>1.2.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>cucumber-java</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>cucumber-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.14.0</version>
         </dependency>
-
-<!--     Maven Cucumber Reporting -->
-        <!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
-        <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>maven-cucumber-reporting</artifactId>
-            <version>5.7.7</version>
-        </dependency>
-
 
         <!-- Logging -->
         <dependency>
@@ -133,7 +112,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -158,45 +136,6 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-
-<!--            Latest Cucumber JVM Reports Plugin-->
-<!--            <plugin>-->
-<!--                <groupId>net.masterthought</groupId>-->
-<!--                <artifactId>maven-cucumber-reporting</artifactId>-->
-<!--                <version>5.7.7</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>execution</id>-->
-<!--                        <phase>verify</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <projectName>NAGP-APPIUM-PROJECT</projectName>-->
-<!--                            <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>-->
-<!--                            <inputDirectory>target/cucumber-reports</inputDirectory>-->
-<!--                            <skip>false</skip>-->
-<!--                            <jsonFiles>-->
-<!--                                &lt;!&ndash; supports wildcard or name pattern &ndash;&gt;-->
-<!--                                <param>**/*.json</param>-->
-<!--                            </jsonFiles>-->
-<!--                            &lt;!&ndash; optional, defaults to outputDirectory if not specified &ndash;&gt;-->
-<!--                            <classificationDirectory>${project.build.directory}/cucumber-reports</classificationDirectory>-->
-<!--                            <classificationFiles>-->
-<!--                                &lt;!&ndash; supports wildcard or name pattern &ndash;&gt;-->
-<!--                                <param>sample.properties</param>-->
-<!--                                <param>other.properties</param>-->
-<!--                            </classificationFiles>-->
-<!--                            &lt;!&ndash; optional, set true to group features by its Ids &ndash;&gt;-->
-<!--                            <mergeFeaturesById>false</mergeFeaturesById>-->
-<!--                            &lt;!&ndash; optional, set true to get a final report with latest results of the same test from different test runs &ndash;&gt;-->
-<!--                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>-->
-<!--                            &lt;!&ndash; optional, set true to fail build on test failures &ndash;&gt;-->
-<!--                            <checkBuildResult>false</checkBuildResult>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 </project>

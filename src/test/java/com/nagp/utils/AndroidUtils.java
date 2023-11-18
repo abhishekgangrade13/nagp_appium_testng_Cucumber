@@ -6,7 +6,6 @@ import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
-import io.cucumber.java.an.Y;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -142,7 +141,6 @@ public class AndroidUtils {
 	}
 
 	public void selectListItem(By by, String item){
-
 		Select dropDownList = new Select(driver.findElement(by));
 		dropDownList.selectByVisibleText(item);
 	}

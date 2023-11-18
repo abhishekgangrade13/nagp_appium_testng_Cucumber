@@ -1,11 +1,8 @@
 package com.nagp.pages;
 
-import com.nagp.step_definitions.CreateAccountTest;
-import com.nagp.tests.BaseTest;
+
 import com.nagp.utils.AndroidUtils;
-import com.nagp.utils.AppiumDriverManager;
 import io.appium.java_client.AppiumDriver;
-import io.cucumber.java.After;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
@@ -47,12 +44,9 @@ public class BasePage{
 
     public void SwitchOrientation(){
         ScreenOrientation currentOrientation = driver.getOrientation();
-        System.out.println("currentOrientation-"+currentOrientation);
         if (currentOrientation.toString().trim().equalsIgnoreCase("LANDSCAPE")){
-            System.out.println("1");
             driver.rotate(ScreenOrientation.PORTRAIT);
         }else if(currentOrientation.toString().trim().equalsIgnoreCase("PORTRAIT")){
-            System.out.println("2");
             driver.rotate(ScreenOrientation.LANDSCAPE);
         }
 

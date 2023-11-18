@@ -1,23 +1,12 @@
 package com.nagp.pages;
 
-import com.nagp.step_definitions.CreateAccountTest;
 import com.nagp.utils.AndroidUtils;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.ElementOption;
-import io.appium.java_client.touch.offset.PointOption;
-import io.cucumber.java.bs.A;
-import net.bytebuddy.asm.Advice;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CreateAccountPage {
 
@@ -36,12 +25,9 @@ public class CreateAccountPage {
     private static final By txt_fullName = By.id("et_name");
     private static final By txt_mobileNo = By.id("et_number");
     private static final By btn_Submit = By.xpath("//*[@text = 'SUBMIT']");
-    private static final By btn_SubmitCity = By.id("btn_submit");
     private static final By ele_titleLogin = By.id("tv_city");
-
     String select_city = "//android.widget.Button[@text = '{strCity}']";
     private static final By txt_area = By.id("act_auto_complete");
-
     private static final By ele_FillDetails = By.id("tv_profile_heading");
     private static final By btn_referalCode = By.id("tv_referral_code");
     private static final By txt_referalCode = By.id("et_referral_code");
@@ -49,23 +35,6 @@ public class CreateAccountPage {
     private static final By btn_CancelReferalCode = By.id("android:id/button2");
     private static final By msg_referalCode = By.id("tv_message");
     //-------------------------------------------------------------------------
-
-//    public void enterUserName(String fieldName, String fieldValue){
-//        By locator = null;
-//        switch (fieldName.toLowerCase()){
-//            case "fullname":
-//                locator = txt_fullName;
-//                break;
-//            case "mobile":
-//                locator = txt_mobileNo;
-//                break;
-//            default:
-//                log.error("No field object exists.");
-//                break;
-//        }
-//        System.out.println(locator);
-//        androidUtils.enterValueInTextBox(fieldValue, locator);
-//    }
 
     public void enterUserName(String fieldValue) {
         androidUtils.enterValueInTextBox(fieldValue, txt_fullName);
@@ -132,7 +101,7 @@ public class CreateAccountPage {
         androidUtils.enterValueInTextBox(fieldValue, txt_referalCode);
         androidUtils.waitFor(2000);
         androidUtils.objectClick(btn_ApplyReferalCode);
-        log.info("Referal code is entered "+fieldValue);
+        log.info("Referral code is entered "+fieldValue);
     }
 
     public void ErrorMessageReferalCode(String errmsg){

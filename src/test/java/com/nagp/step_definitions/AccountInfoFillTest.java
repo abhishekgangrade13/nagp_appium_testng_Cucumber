@@ -4,12 +4,10 @@ import com.nagp.pages.AccountInfoFillPage;
 import com.nagp.utils.AppiumDriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 
 
 public class AccountInfoFillTest extends AppiumDriverManager {
 
-    final static Logger log = Logger.getLogger(AccountInfoFillTest.class);
     AccountInfoFillPage accountInfoFillPage = new AccountInfoFillPage(driver);
 
     @Then("user see {string} under My Gender section")
@@ -76,22 +74,5 @@ public class AccountInfoFillTest extends AppiumDriverManager {
     public void fnVerifyJobApplyHomeLocation() {
         accountInfoFillPage.VerifyJobApplyHomeLocation();
     }
-
-
-//    public AppiumDriver<MobileElement> driver;
-//    @BeforeMethod(alwaysRun = true)
-//    public void Initialize(){
-//        driver = initializeDriver();
-//    }
-//
-//    @Then("user see {string} under My Gender section")
-//    public void  fnVerifyGenderSection(String gender) {
-//        accountInfoFillPage.VerifyGenderSection(gender);
-//    }
-//
-//    @AfterMethod(alwaysRun = true)
-//    public void tearDown(){
-//        this.driver.quit();
-//    }
 
 }

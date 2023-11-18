@@ -1,16 +1,11 @@
 package com.nagp.pages;
 
-import com.beust.ah.A;
 import com.nagp.utils.AndroidUtils;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import static com.nagp.utils.Constants.Title_InterestedIn;
-import static com.nagp.utils.Constants.Title_WorkIndia;
 
 public class HomeApplyJobPage {
 
@@ -30,7 +25,6 @@ public class HomeApplyJobPage {
     String txt_FirstSearchedJob = "(//android.widget.TextView[@text='{strTextName}'])[{strResultNo}]";
     private static final By ele_JobTitle = By.id("tv_job_title");
     private static final By btn_CalltoHR = By.id("btn_schedule_2");
-    private static final By ele_InterviewAddressTitle = By.id("tv_head_job_interview_address");
     //-------------------------------------------------------------------------
 
     public void SearchForJobAndCLickonResult(String jobTitle, String resultNo){
@@ -53,7 +47,6 @@ public class HomeApplyJobPage {
             flag = true;
         }
         androidUtils.scrollUptoDown(0.80,0.30,0.50,2000);
-//        androidUtils.objectTap(ele_InterviewAddressTitle);
         Assert.assertTrue(androidUtils.objectExists(btn_CalltoHR) && flag, "User is not navigated to Job profile details screen and able to see contact to HR button.");
         log.info("User should be navigated to Job profile details screen and able to see contact to HR button.");
     }

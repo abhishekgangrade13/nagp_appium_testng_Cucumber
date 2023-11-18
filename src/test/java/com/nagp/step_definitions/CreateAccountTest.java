@@ -6,11 +6,9 @@ import com.nagp.utils.AppiumDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 
 
 public class CreateAccountTest extends AppiumDriverManager {
-    final static Logger log = Logger.getLogger(CreateAccountTest.class);
     BasePage basePage = new BasePage(driver);
     CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 
@@ -22,7 +20,6 @@ public class CreateAccountTest extends AppiumDriverManager {
     @Then("user should be able to successfully launch the application")
     public void fnLaunchSuccessfully() {
         basePage.fnLaunchSuccess();
-
     }
 
     @Given("User enter the {string} in FullName field")
@@ -35,8 +32,8 @@ public class CreateAccountTest extends AppiumDriverManager {
         createAccountPage.enterMobileNo(value);
     }
 
-    @Given("User enter the {string} in referal code field")
-    public void fnEnterReferalCode(String value) {
+    @Given("User enter the {string} in referral code field")
+    public void fnEnterReferralCode(String value) {
         createAccountPage.EnterReferalCode(value);
     }
 
@@ -80,14 +77,4 @@ public class CreateAccountTest extends AppiumDriverManager {
         createAccountPage.FillDetailsScreen();
     }
 
-
-//    @After
-//    public void tearDown(){
-//        basePage.tearDown();
-//    }
-
-//    @AfterMethod(alwaysRun = true)
-//    public void tearDown(){
-//        this.driver.quit();
-//    }
 }

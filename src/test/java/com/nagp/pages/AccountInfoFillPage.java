@@ -1,13 +1,11 @@
 package com.nagp.pages;
 
-import com.nagp.step_definitions.CreateAccountTest;
 import com.nagp.utils.AndroidUtils;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import static com.nagp.utils.Constants.*;
 
 public class AccountInfoFillPage {
@@ -140,12 +138,9 @@ public class AccountInfoFillPage {
 
     public void ScrollUptoDown(){
         androidUtils.scrollUptoDown(0.70,0.10,0.50, 2000);
-//        androidUtils.waitFor(1000);
     }
 
     public void VerifyAgeSection(){
-        boolean flag = true;
-
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Age);
         By loc_txtTitleldName = By.xpath(strTxtName);

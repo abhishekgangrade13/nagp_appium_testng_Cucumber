@@ -5,8 +5,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.testng.annotations.Listeners;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +24,7 @@ public class AppiumDriverManager {
                 log.info("Driver initialized.");
                 driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigFileReader.getConfigPropertyVal("globalWait")), TimeUnit.MILLISECONDS);
             } catch (MalformedURLException e) {
-                log.info("Error message:" + e.getMessage());
+                log.info("Error message in driver initialization :" + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -38,9 +36,5 @@ public class AppiumDriverManager {
         driver.quit();
         log.info("Remove app and Tear Down Appium driver.");
     }
-
-
-
-
 
 }
