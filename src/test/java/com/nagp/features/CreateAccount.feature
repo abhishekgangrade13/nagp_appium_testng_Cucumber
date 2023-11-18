@@ -25,8 +25,8 @@
       And screen should display all cities "<City>"
 
       Examples:
-        | Name     | MobileNo   | City |
-        | Abhishek | 1234567869 |MUMBAI, PUNE, DELHI, BENGALURU |
+        | Name     | MobileNo   | City                           |
+        | Abhishek | 1234567869 | MUMBAI, PUNE, DELHI, BENGALURU |
 
 
     Scenario Outline: User try to apply for invalid referal code

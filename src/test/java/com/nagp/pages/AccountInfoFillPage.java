@@ -13,11 +13,12 @@ import static com.nagp.utils.Constants.*;
 public class AccountInfoFillPage {
     final static Logger log = Logger.getLogger(AccountInfoFillPage.class);
 
-    AndroidUtils androidUtils = null;
-    public AppiumDriver driver = null;
+    AndroidUtils androidUtils;
+    public AppiumDriver driver;
 
     public AccountInfoFillPage(AppiumDriver driver) {
         this.driver = driver;
+        androidUtils =new AndroidUtils(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -29,7 +30,6 @@ public class AccountInfoFillPage {
 
     public void VerifyGenderSection(String strGender){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Gender);
@@ -52,7 +52,6 @@ public class AccountInfoFillPage {
 
     public void VerifyQualificationSection(String strQualification){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Qualification);
@@ -75,7 +74,6 @@ public class AccountInfoFillPage {
 
     public void VerifylanguageSection(String strLanguage){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Medium);
@@ -98,7 +96,6 @@ public class AccountInfoFillPage {
 
     public void VerifyFluencySection(String strfluency){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Fluency);
@@ -121,7 +118,6 @@ public class AccountInfoFillPage {
 
     public void VerifyExperienceSection(String strExperience){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Exp);
@@ -143,14 +139,12 @@ public class AccountInfoFillPage {
     }
 
     public void ScrollUptoDown(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         androidUtils.scrollUptoDown(0.70,0.10,0.50, 2000);
 //        androidUtils.waitFor(1000);
     }
 
     public void VerifyAgeSection(){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Age);
@@ -166,7 +160,6 @@ public class AccountInfoFillPage {
 
     public void VerifyInterestedSection(String strInterested){
         boolean flag = true;
-        AndroidUtils androidUtils =new AndroidUtils(driver);
 
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_InterestedIn);
@@ -196,7 +189,6 @@ public class AccountInfoFillPage {
             objString = chkbx_appInfoScreen;
             strReplaceName = "{strCheckboxName}";
         }
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         By loc_field = By.xpath(objString.replace(strReplaceName,fieldValue.trim()));
         androidUtils.waitUntilElementVisible(loc_field,3000);
         androidUtils.objectTap(loc_field);
@@ -204,7 +196,6 @@ public class AccountInfoFillPage {
     }
 
     public void SelectAgeField(String AgeValue){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         By loc_Agefield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Age));
         androidUtils.objectClick(loc_Agefield);
         androidUtils.waitFor(2000);
@@ -216,7 +207,6 @@ public class AccountInfoFillPage {
     }
 
     public void VerifySalaryDetailsScreen(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         By ele_SalaryDetailScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_Salary));
         androidUtils.waitUntilElementVisible(ele_SalaryDetailScreen, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_SalaryDetailScreen), "User is not able to navigate to last salary details screen.");
@@ -224,7 +214,6 @@ public class AccountInfoFillPage {
     }
 
     public void SelectLastDrawnSalary(String lastSalaryValue){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         By loc_lastSalaryfield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Salary));
         androidUtils.waitUntilElementVisible(loc_lastSalaryfield,3000);
         androidUtils.objectClick(loc_lastSalaryfield);
@@ -238,13 +227,10 @@ public class AccountInfoFillPage {
     }
 
     public void VerifyJobApplyHomeLocation(){
-        AndroidUtils androidUtils =new AndroidUtils(driver);
         By ele_JobApplyHomeScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_WorkIndia));
         androidUtils.waitUntilElementVisible(ele_JobApplyHomeScreen, 15000);
         Assert.assertTrue(androidUtils.objectExists(ele_JobApplyHomeScreen), "User is not able to create profile and work india job search screen should be displayed.");
         log.info("User is able to create profile and work india job search screen should be displayed.");
     }
-
-
 
 }

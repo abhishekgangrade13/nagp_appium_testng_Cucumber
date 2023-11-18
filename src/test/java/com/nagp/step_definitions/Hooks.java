@@ -1,27 +1,22 @@
 package com.nagp.step_definitions;
 
-import com.nagp.tests.BaseTest;
-import io.appium.java_client.AppiumDriver;
+import com.nagp.utils.AppiumDriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.apache.log4j.Logger;
 
-public class Hooks extends BaseTest {
+public class Hooks extends AppiumDriverManager {
+    final static Logger log = Logger.getLogger(Hooks.class);
 
-//    @Before //start of each secenario
-//    public void setUp(){
-////        System.out.println("Setting up Android capabilities and launch app");
-//      driver = initializeDriver();
-//    }
-//
-//    @After  //end of each scenario
-//    public void tearDown(){
-////        if(scenario.isFailed())
-////        {
-//////            scenario.attach(getByteScreenshot(), "image/png", scenario.getName());
-////        }
-////        System.out.println("Remove app from android");
-////        driver.removeApp("in.workindia.nileshdungarwal.workindiaandroid");
-//        driver.quit();
-//    }
+    @Before
+    public void beforeMethod(Scenario scenario){
+        log.info("Test Case execution started : " +scenario.getName());
+    }
+
+    @After
+    public void afterMethod(Scenario scenario){
+        log.info("Test Case execution completed : " +scenario.getName());
+    }
 
 }

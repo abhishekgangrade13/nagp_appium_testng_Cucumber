@@ -1,33 +1,24 @@
 package com.nagp.step_definitions;
 
-import com.nagp.pages.AccountInfoFillPage;
 import com.nagp.pages.BasePage;
 import com.nagp.pages.CreateAccountPage;
-import com.nagp.tests.BaseTest;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.cucumber.core.internal.com.fasterxml.jackson.databind.ser.Serializers;
-import io.cucumber.java.After;
+import com.nagp.utils.AppiumDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
-public class CreateAccountTest extends BaseTest {
+
+public class CreateAccountTest extends AppiumDriverManager {
     final static Logger log = Logger.getLogger(CreateAccountTest.class);
-
-    public CreateAccountTest(){
-        super();
-        this.driver = initializeDriver();
-    }
+    BasePage basePage = new BasePage(driver);
+    CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 
     @Given("User launch the application")
     public void fnLaunchApplication() {
         basePage.fnAcceptPermission();
     }
+
     @Then("user should be able to successfully launch the application")
     public void fnLaunchSuccessfully() {
         basePage.fnLaunchSuccess();
@@ -89,85 +80,11 @@ public class CreateAccountTest extends BaseTest {
         createAccountPage.FillDetailsScreen();
     }
 
-    @Then("user see {string} under My Gender section")
-    public void  fnVerifyGenderSection(String gender) {
-        accountInfoFillPage.VerifyGenderSection(gender);
-    }
 
-    @Then("user see {string} under My Qualification section")
-    public void  fnVerifyQualificationSection(String qualification) {
-        accountInfoFillPage.VerifyQualificationSection(qualification);
-    }
-
-    @Then("user see {string} under My school medium section")
-    public void  fnVerifylanguageSection(String language) {
-        accountInfoFillPage.VerifylanguageSection(language);
-    }
-
-    @Then("user see {string} under How I Speak section")
-    public void  fnVerifyFluencySection(String fluency) {
-        accountInfoFillPage.VerifyFluencySection(fluency);
-    }
-
-    @Then("user see {string} under Fresher_Experience section")
-    public void  fnVerifyExperienceSection(String experience) {
-        accountInfoFillPage.VerifyExperienceSection(experience);
-    }
-
-    @When("User scroll from up to down")
-    public void  fnScrollUptoDown() {
-        accountInfoFillPage.ScrollUptoDown();
-    }
-
-    @Then("user see Age field under My Age section")
-    public void  fnVerifyAgeSection() {
-        accountInfoFillPage.VerifyAgeSection();
-    }
-
-    @Then("user see {string} under Interested_Exerienced section")
-    public void  fnVerifyInterestedSection(String interested) {
-        accountInfoFillPage.VerifyInterestedSection(interested);
-    }
-
-    @When("User selected {string} as {string}")
-    public void  fnTabField(String fieldName, String fieldValue) {
-        accountInfoFillPage.TabField(fieldName, fieldValue);
-    }
-
-    @When("user selected age as {string}")
-    public void  fnSelectAgeField(String ageValue) {
-        accountInfoFillPage.SelectAgeField(ageValue);
-    }
-
-    @Then("User should be navigated to last salary details screen")
-    public void fnVerifySalaryDetailsScreen() {
-        accountInfoFillPage.VerifySalaryDetailsScreen();
-    }
-
-    @When("User selected last drawn salary as {string}")
-    public void  fnSelectLastDrawnSalary(String LastSalary) {
-        accountInfoFillPage.SelectLastDrawnSalary(LastSalary);
-    }
-
-    @Then("User should be able to create profile and work india job search screen should be displayed")
-    public void fnVerifyJobApplyHomeLocation() {
-        accountInfoFillPage.VerifyJobApplyHomeLocation();
-    }
-
-    @When("User search for job {string} and click on {string} result")
-    public void  fnSearchForJobAndCLickonResult(String JobFilter, String resultNo) {
-        homeApplyJobPage.SearchForJobAndCLickonResult(JobFilter, resultNo);
-    }
-
-    @Then("User should be navigated to Job profile {string} details screen and able to see contact to HR button")
-    public void fnVerifyJobProfileDetail(String jobTitle) {
-        homeApplyJobPage.VerifyJobProfileDetail(jobTitle);
-    }
-
-    @After
-    public void tearDown(){
-        basePage.tearDown();
-    }
+//    @After
+//    public void tearDown(){
+//        basePage.tearDown();
+//    }
 
 //    @AfterMethod(alwaysRun = true)
 //    public void tearDown(){

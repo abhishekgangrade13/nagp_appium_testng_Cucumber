@@ -3,6 +3,7 @@ package com.nagp.pages;
 import com.nagp.step_definitions.CreateAccountTest;
 import com.nagp.tests.BaseTest;
 import com.nagp.utils.AndroidUtils;
+import com.nagp.utils.AppiumDriverManager;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import org.apache.log4j.Logger;
@@ -14,9 +15,8 @@ import org.testng.Assert;
 public class BasePage{
     final static Logger log = Logger.getLogger(BasePage.class);
 
-//    AndroidUtils androidUtils;
-    public AppiumDriver driver;
-    public AndroidUtils androidUtils;
+    AndroidUtils androidUtils;
+    AppiumDriver driver;
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
@@ -24,9 +24,7 @@ public class BasePage{
         PageFactory.initElements(driver, this);
     }
 
-    //Create object of utils class
-
-        //Page Objects-----------------------------------------------------
+    //Page Objects-----------------------------------------------------
         private static final By btn_Permmission_Continue = By.id("com.android.permissioncontroller:id/continue_button");
         private static final By btn_OK = By.id("android:id/button1");
         private static final By txt_edtName = By.id("et_name");
@@ -63,11 +61,6 @@ public class BasePage{
         }catch (Exception e){
             log.error("Error message is "+ e.getMessage());
         }
-    }
-
-    public void tearDown(){
-        driver.quit();
-        log.info("driver quit.");
     }
 
 }

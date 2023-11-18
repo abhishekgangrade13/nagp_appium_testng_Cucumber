@@ -14,13 +14,8 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 
-public class Listener extends BaseTest implements ITestListener {
-//    public AppiumDriver driver;
-//    public Listener(){
-//        super();
-//        this.driver = initializeDriver();
-//    }
-
+public class Listener extends  AppiumDriverManager implements ITestListener {
+    BaseTest baseTest = new BaseTest();
     @Override
     public void onTestStart(ITestResult result) {
         // TODO Auto-generated method stub
@@ -33,7 +28,6 @@ public class Listener extends BaseTest implements ITestListener {
         System.out.println("Testcase Passed :"+result.getName());
 
     }
-
 
     @Override
     public void onTestFailure(ITestResult result) {
@@ -49,7 +43,7 @@ public class Listener extends BaseTest implements ITestListener {
         }
 
         try {
-            takeScreenShotPath(testMethodName, mobileDriver);
+            baseTest.takeScreenShotPath(testMethodName, mobileDriver);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

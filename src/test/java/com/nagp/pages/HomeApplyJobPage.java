@@ -16,8 +16,8 @@ public class HomeApplyJobPage {
 
     final static Logger log = Logger.getLogger(AccountInfoFillPage.class);
 
-    AndroidUtils androidUtils = null;
-    public AppiumDriver driver = null;
+    AndroidUtils androidUtils;
+    public AppiumDriver driver;
 
     public HomeApplyJobPage(AppiumDriver driver) {
         this.driver = driver;

@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name= "com.nagp.utils.ExtentTestNGIReporterListener" />
-        <listener class-name= "com.nagp.utils.Listener"/>
+<!--        <listener class-name= "com.nagp.utils.ExtentTestNGIReporterListener" />-->
+<!--        <listener class-name= "com.nagp.utils.Listener"/>-->
     </listeners>
     <test name="nagp.appium.project">
         <classes>
