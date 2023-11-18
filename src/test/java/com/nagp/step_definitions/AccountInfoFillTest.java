@@ -2,6 +2,7 @@ package com.nagp.step_definitions;
 
 import com.nagp.pages.AccountInfoFillPage;
 import com.nagp.utils.AppiumDriverManager;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
@@ -77,6 +78,9 @@ public class AccountInfoFillTest extends AppiumDriverManager {
         accountInfoFillPage.VerifyJobApplyHomeLocation();
     }
 
+
+
+@AfterStep
 
 //    public AppiumDriver<MobileElement> driver;
 //    @BeforeMethod(alwaysRun = true)

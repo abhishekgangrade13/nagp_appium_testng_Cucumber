@@ -25,6 +25,8 @@ import java.io.File;
 @CucumberOptions(
         features = {"src/test/java/com/nagp/features"},///CreateAccount.feature
         glue = {"com/nagp/step_definitions"},
+        plugin = { "pretty", "json:target/cucumber-reports/cucumber.json","html:target/cucumber-reports/cucumberreport.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+
 //        plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true,
 //        plugin = {"html:target/cucumber-html-report","json:target/cucumber-reports/cucumber.json","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
