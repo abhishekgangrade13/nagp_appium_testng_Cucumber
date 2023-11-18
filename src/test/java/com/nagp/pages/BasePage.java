@@ -41,7 +41,6 @@ public class BasePage{
         log.info("Application home screen displayed successfully.");
     }
 
-
     public void SwitchOrientation(){
         ScreenOrientation currentOrientation = driver.getOrientation();
         if (currentOrientation.toString().trim().equalsIgnoreCase("LANDSCAPE")){
