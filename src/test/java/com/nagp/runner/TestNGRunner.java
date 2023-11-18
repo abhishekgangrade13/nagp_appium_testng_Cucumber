@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.*;
 
 @CucumberOptions(
-        tags = "@CreateAccountScreen", //@Sanity @Regression, @CreateAccountScreen, @HomeApplyJobFeature, @AccountInfoFillScreen
+        tags = "", //@Sanity @Regression, @CreateAccountScreen, @HomeApplyJobFeature, @AccountInfoFillScreen
         features = {"src/test/java/com/nagp/features"},
         glue = {"com/nagp/step_definitions"},
         monochrome = true,
