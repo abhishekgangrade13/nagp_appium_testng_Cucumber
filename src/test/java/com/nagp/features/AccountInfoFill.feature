@@ -1,4 +1,3 @@
-
 @AccountInfoFillScreen
 Feature: Validate the account details screen
 

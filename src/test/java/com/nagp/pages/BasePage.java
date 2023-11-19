@@ -1,5 +1,13 @@
-package com.nagp.pages;
+// '##################################################################################################################################
+// 'Script Name      : BasePage
+// 'Description      : Page file contains generic locator and method base test
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 12-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
 
+package com.nagp.pages;
 
 import com.nagp.utils.AndroidUtils;
 import io.appium.java_client.AppiumDriver;
@@ -15,6 +23,7 @@ public class BasePage{
     AndroidUtils androidUtils;
     AppiumDriver driver;
 
+    //Constructor
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
         androidUtils =new AndroidUtils(driver);
@@ -28,6 +37,10 @@ public class BasePage{
 
     //------------------------------------------------------------------
 
+    //'===========================================================================================================
+    //'Function Name       : fnAcceptPermission
+    //'Description         : Function to accept permission and message popup for getting to home screen
+    //'============================================================================================================
     public void fnAcceptPermission(){
         androidUtils.objectClick(btn_Permmission_Continue);
         androidUtils.waitUntilElementVisible(btn_OK,5000);
@@ -36,11 +49,20 @@ public class BasePage{
         log.info("Permission and message popup accepted successfully.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : fnLaunchSuccess
+    //'Description         : Function to verify application launched successfully
+    //'============================================================================================================
     public void fnLaunchSuccess(){
         Assert.assertTrue(androidUtils.objectExists(txt_edtName),"Not able to launch the application");
         log.info("Application home screen displayed successfully.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : SwitchOrientation
+    //'Description         : Function to switch orientation from landscape to portrait and vice versa
+    //                       (If its landscape then change to portrait and vice versa)
+    //'============================================================================================================
     public void SwitchOrientation(){
         ScreenOrientation currentOrientation = driver.getOrientation();
         if (currentOrientation.toString().trim().equalsIgnoreCase("LANDSCAPE")){

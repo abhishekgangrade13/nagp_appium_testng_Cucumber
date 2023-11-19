@@ -12,10 +12,19 @@ This is a _Maven project_ that demonstrates how to use the _Page Factory design 
 
 **Emulator**
 * Pixel 4a API 30 (Android 11)
+* Pixel 7 API 30 (Android 11)
 
 **Installation**
-Clone the project or download it from repository or drive.
+1. Clone the project or download it from repository or drive.
+2. Put your apk under this src/test/resources/apps
+3. Update the configuration properties wrt to apk details, appium server details
 
+**Start Project**
+1. Run the emulator as mentioned above (or user canchoose other android app too)
+2. Start the default appium server
+3. Run using maven command or from testng xml.
+
+(IMP Note = 1 TCs failed intentionally to demostrate the screenshot attachment in case of failure)
 ************************************************************
 _To fetch the dependencies from Command line:_
 Add maven path to the environment variables. 

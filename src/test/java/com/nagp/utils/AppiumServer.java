@@ -1,3 +1,13 @@
+// '##################################################################################################################################
+// 'Script Name      : AppiumServer
+// 'Description      : utils file to run the appium service using cmd or inbuild methods
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 18-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
+
+
 package com.nagp.utils;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -12,6 +22,10 @@ public class AppiumServer {
     final static Logger log = Logger.getLogger(AppiumServer.class);
     public static AppiumDriverLocalService service;
 
+    //'===========================================================================================================
+    //'Function Name       : start
+    //'Description         : Function to start service using inbuilt class
+    //'============================================================================================================
     public static void start(){
         //starting Appium Server
         try{
@@ -24,11 +38,19 @@ public class AppiumServer {
         }
     }
 
+    //'===========================================================================================================
+    //'Function Name       : stop
+    //'Description         : Function to stop service using inbuilt class
+    //'============================================================================================================
     public static void stop(){
         service.stop();
         log.info("Server stopped.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : startServer
+    //'Description         : Function to start service using command line
+    //'============================================================================================================
     public void startServer(){
         CommandLine cmd = new CommandLine(ConfigFileReader.getConfigPropertyVal("NodePath"));
         cmd.addArgument(ConfigFileReader.getConfigPropertyVal("mainJSPath"));
@@ -50,6 +72,10 @@ public class AppiumServer {
     }
 
 
+    //'===========================================================================================================
+    //'Function Name       : stopServer
+    //'Description         : Function to stop service using command line
+    //'============================================================================================================
     public void stopServer(){
         Runtime runtime = Runtime.getRuntime();
         try{

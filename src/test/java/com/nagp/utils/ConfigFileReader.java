@@ -1,3 +1,13 @@
+// '##################################################################################################################################
+// 'Script Name      : ConfigFileReader
+// 'Description      : utils file to read configuration properties file
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 15-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
+
+
 package com.nagp.utils;
 
 import java.io.FileInputStream;

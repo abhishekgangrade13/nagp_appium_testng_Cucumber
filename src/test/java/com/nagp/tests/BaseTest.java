@@ -1,3 +1,12 @@
+// '##################################################################################################################################
+// 'Script Name      : BaseTest
+// 'Description      : BaseTest containing base information related to application
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 12-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
+
 package com.nagp.tests;
 
 import com.nagp.utils.ConfigFileReader;
@@ -9,6 +18,10 @@ public class BaseTest {
 
     public AppiumDriver<MobileElement> driver;
 
+    //'===========================================================================================================
+    //'Function Name       : setAppCapabilities
+    //'Description         : Function to set App capabilities to initialize appium driver
+    //'============================================================================================================
     public DesiredCapabilities setAppCapabilities(){
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("autoGrantPermissions", ConfigFileReader.getConfigPropertyVal("autoGrantPermissions"));

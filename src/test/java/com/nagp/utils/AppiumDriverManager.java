@@ -1,3 +1,12 @@
+// '##################################################################################################################################
+// 'Script Name      : AppiumDriverManager
+// 'Description      : Appium driver manager file to initialize and tear down driver
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 15-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
+
 package com.nagp.utils;
 
 import com.nagp.tests.BaseTest;
@@ -8,7 +17,6 @@ import org.apache.log4j.Logger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
 
 public class AppiumDriverManager {
     final static Logger log = LogManager.getLogger(AppiumDriverManager.class);
@@ -30,6 +38,7 @@ public class AppiumDriverManager {
         }
     }
 
+    //tear down driver
     public void tearDownDriver(){
         //Tearing Driver
         driver.removeApp(ConfigFileReader.getConfigPropertyVal("appPackage"));

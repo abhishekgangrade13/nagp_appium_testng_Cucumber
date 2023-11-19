@@ -1,3 +1,13 @@
+// '##################################################################################################################################
+// 'Script Name      : AccountInfoFillPage
+// 'Description      : Page file contains locator and method for Account details screen
+// 'Application      : in.workindia.nileshdungarwal.workindiaandroid
+// 'Created On       : 15-11-2023
+// 'Updated On       : NA
+// 'Created By       : Abhishek Gangrade
+// '###################################################################################################################################
+
+
 package com.nagp.pages;
 
 import com.nagp.utils.AndroidUtils;
@@ -14,6 +24,7 @@ public class AccountInfoFillPage {
     AndroidUtils androidUtils;
     public AppiumDriver driver;
 
+    //Constructor
     public AccountInfoFillPage(AppiumDriver driver) {
         this.driver = driver;
         androidUtils =new AndroidUtils(driver);
@@ -26,6 +37,10 @@ public class AccountInfoFillPage {
     String chkbx_appInfoScreen = "//android.widget.CheckBox[contains(@text,'{strCheckboxName}')]";
     //-------------------------------------------------------------------------
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyGenderSection
+    //'Description         : Function to verify Gender title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyGenderSection(String strGender){
         boolean flag = true;
 
@@ -48,6 +63,10 @@ public class AccountInfoFillPage {
         log.info("User able to see all the Gender on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyQualificationSection
+    //'Description         : Function to verify Qualification title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyQualificationSection(String strQualification){
         boolean flag = true;
 
@@ -70,6 +89,10 @@ public class AccountInfoFillPage {
         log.info("User able to see all the Qualification on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifylanguageSection
+    //'Description         : Function to verify Language title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifylanguageSection(String strLanguage){
         boolean flag = true;
 
@@ -92,6 +115,10 @@ public class AccountInfoFillPage {
         log.info("User able to see all the language on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyFluencySection
+    //'Description         : Function to verify fluency title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyFluencySection(String strfluency){
         boolean flag = true;
 
@@ -114,6 +141,10 @@ public class AccountInfoFillPage {
         log.info("User able to see all the fluency on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyExperienceSection
+    //'Description         : Function to verify Experience title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyExperienceSection(String strExperience){
         boolean flag = true;
 
@@ -136,10 +167,18 @@ public class AccountInfoFillPage {
         log.info("User able to see all the Experience on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : ScrollUptoDown
+    //'Description         : Function to scroll screen from Up to Down by certain percentage
+    //'============================================================================================================
     public void ScrollUptoDown(){
         androidUtils.scrollUptoDown(0.70,0.10,0.50, 2000);
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyAgeSection
+    //'Description         : Function to verify Age title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyAgeSection(){
         //Field - Title heading
         String strTxtName = txt_appInfoScreen.replace("{strTextName}",Title_Age);
@@ -153,6 +192,10 @@ public class AccountInfoFillPage {
         log.info("User able to see Age section on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyInterestedSection
+    //'Description         : Function to verify Interested title and values present under it on account details screen
+    //'============================================================================================================
     public void VerifyInterestedSection(String strInterested){
         boolean flag = true;
 
@@ -175,6 +218,10 @@ public class AccountInfoFillPage {
         log.info("User able to see all the Interested fields on screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : TabField
+    //'Description         : Function to tab on values for each Menu on account information screen
+    //'============================================================================================================
     public void TabField(String fieldName, String fieldValue){
         String objString, strReplaceName;
         if (!(fieldName.trim().equalsIgnoreCase("InterestedIn"))){
@@ -190,6 +237,10 @@ public class AccountInfoFillPage {
         log.info("User selected "+fieldName+" as "+fieldValue);
     }
 
+    //'===========================================================================================================
+    //'Function Name       : SelectAgeField
+    //'Description         : Function to select age field value on account details screen
+    //'============================================================================================================
     public void SelectAgeField(String AgeValue){
         By loc_Agefield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Age));
         androidUtils.objectClick(loc_Agefield);
@@ -201,6 +252,10 @@ public class AccountInfoFillPage {
         log.info("User selected age as "+AgeValue);
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifySalaryDetailsScreen
+    //'Description         : Function to verify salary detail screen should be displayed
+    //'============================================================================================================
     public void VerifySalaryDetailsScreen(){
         By ele_SalaryDetailScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_Salary));
         androidUtils.waitUntilElementVisible(ele_SalaryDetailScreen, 15000);
@@ -208,6 +263,10 @@ public class AccountInfoFillPage {
         log.info("User is able to navigate to last salary details screen.");
     }
 
+    //'===========================================================================================================
+    //'Function Name       : SelectLastDrawnSalary
+    //'Description         : Function to select last drawn salary field value on account details screen
+    //'============================================================================================================
     public void SelectLastDrawnSalary(String lastSalaryValue){
         By loc_lastSalaryfield = By.xpath(txt_appInfoScreen.replace("{strTextName}",Value_Salary));
         androidUtils.waitUntilElementVisible(loc_lastSalaryfield,3000);
@@ -221,6 +280,10 @@ public class AccountInfoFillPage {
         log.info("User selected last drawn salary as "+lastSalaryValue);
     }
 
+    //'===========================================================================================================
+    //'Function Name       : VerifyJobApplyHomeLocation
+    //'Description         : Function to verify job home screen should be displayed
+    //'============================================================================================================
     public void VerifyJobApplyHomeLocation(){
         By ele_JobApplyHomeScreen = By.xpath(txt_appInfoScreen.replace("{strTextName}",Title_WorkIndia));
         androidUtils.waitUntilElementVisible(ele_JobApplyHomeScreen, 15000);

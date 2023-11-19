@@ -30,6 +30,13 @@
 #        |Name | MobileNo | City |
 #        |Abhishek|1234567869|MUMBAI, PUNE, DELHI, BENGALURU|
 
+    @FailedScreenshot
+    Scenario: User is able to login with valid details but cities are not matched(Case to check screenshot in case of failure on report)
+      Given User enter the "Abhishek" in FullName field
+      And User enter the "1234567869" in Mobile field
+      And User click on submit button
+      Then user should be able to login into application successfully
+      And screen should display all cities "MUMBAI1, PUNE, DELHI, BENGALURU"
 
     @Regression
     Scenario Outline: User is not able to apply the invalid referral code on login
